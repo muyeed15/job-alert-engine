@@ -1,0 +1,58 @@
+[Unit]
+Description=Job Alert Engine
+Documentation=file:///opt/job-alert-engine/README.md
+Wants=network-online.target
+After=network-online.target time-sync.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+User=jobnotifier
+Group=jobnotifier
+WorkingDirectory=/opt/job-alert-engine
+ExecStart=/opt/job-alert-engine/.venv/bin/python -m job_notifier --run
+ExecReload=/bin/kill -HUP $MAINPID
+
+# Secrets are read from /opt/job-alert-engine/.env by the service.
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONDONTWRITEBYTECODE=1
+# Digest times in config.json use this timezone.
+Environment=TZ=Asia/Dhaka
+# Limit glibc malloc arenas to keep RSS low on small ARM boards.
+Environment=MALLOC_ARENA_MAX=2
+
+Restart=always
+RestartSec=10
+TimeoutStopSec=60
+
+# Resource limits for Raspberry Pi Zero 2 W (512 MB RAM).
+MemoryMax=80M
+MemoryHigh=70M
+MemorySwapMax=0
+CPUQuota=50%
+Nice=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
+
+# Logging -> journalctl -u job-notifier -f
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=job-notifier
+
+# Hardening
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/opt/job-alert-engine/data
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+RestrictRealtime=yes
+LockPersonality=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+
+[Install]
+WantedBy=multi-user.target
