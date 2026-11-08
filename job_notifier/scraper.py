@@ -203,7 +203,7 @@ class JobScraper:
         s.mount("https://", adapter)
         s.mount("http://", adapter)
         headers = {
-            "User-Agent": f"Mozilla/5.0 (X11; Linux aarch64) job-alert-engine/{__version__}",
+            "User-Agent": f"Mozilla/5.0 (X11; Linux x86_64) job-alert-engine/{__version__}",
             "Accept": "application/json, text/plain, */*",
         }
         if settings and settings.job_url_template:

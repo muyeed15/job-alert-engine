@@ -1,4 +1,4 @@
-# Runtime dependencies pinned for reproducible installs on Raspberry Pi OS (Python 3.10+).
+# Runtime dependencies pinned for reproducible installs (Python 3.9+).
 # Total import footprint is ~15-20 MB RSS.
 requests==2.34.2
 urllib3==2.8.0

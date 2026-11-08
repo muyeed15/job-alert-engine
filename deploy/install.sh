@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Install or update the Job Alert Engine as a systemd service on Raspberry Pi OS / Linux.
+# Install or update the Job Alert Engine as a systemd service on Linux.
 # Usage (from the project folder): sudo ./deploy/install.sh
 set -euo pipefail
 

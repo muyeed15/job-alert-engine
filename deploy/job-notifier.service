@@ -18,14 +18,14 @@ Environment=PYTHONUNBUFFERED=1
 Environment=PYTHONDONTWRITEBYTECODE=1
 # Digest times in config.json use this timezone.
 Environment=TZ=Asia/Dhaka
-# Limit glibc malloc arenas to keep RSS low on small ARM boards.
+# Limit glibc malloc arenas to keep RSS low.
 Environment=MALLOC_ARENA_MAX=2
 
 Restart=always
 RestartSec=10
 TimeoutStopSec=60
 
-# Resource limits for Raspberry Pi Zero 2 W (512 MB RAM).
+# Resource limits for low-memory environments.
 MemoryMax=80M
 MemoryHigh=70M
 MemorySwapMax=0

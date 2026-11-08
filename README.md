@@ -1,6 +1,6 @@
 # Job Alert Engine
 
-A lightweight Python service that monitors job listings every 30 minutes, filters them against user rules, and sends email alerts through Gmail SMTP. It is designed to run on low-resource hardware such as the Raspberry Pi Zero 2 W (512 MB RAM).
+A lightweight Python service that monitors job listings every 30 minutes, filters them against user rules, and sends email alerts through Gmail SMTP.
 
 For a full guide on choosing categories, locations, experience ranges, and keywords for different professions, see [GUIDE.md](GUIDE.md).
 
@@ -33,7 +33,7 @@ job-alert-engine/
     manage.py      - Administrative CLI (users, database, and inspection)
   deploy/
     job-notifier.service - systemd unit file with 80 MB memory cap
-    install.sh           - Installer script for Linux / Raspberry Pi OS
+    install.sh           - Installer script for Linux
   tests/
     test_core.py   - Offline unit tests
   ecosystem.config.js - PM2 process manager configuration
@@ -190,9 +190,9 @@ pm2 restart job-notifier
 
 You can also start `main.py` directly with PM2 (`pm2 start main.py --interpreter ./.venv/bin/python --name job-notifier`); when launched under PM2 without flags, `main.py` automatically defaults to `--run`.
 
-## Raspberry Pi Deployment (systemd)
+## Linux Deployment (systemd)
 
-To install and run as a `systemd` background service on Raspberry Pi OS:
+To install and run as a `systemd` background service on Linux:
 
 ```bash
 sudo apt install -y python3 python3-venv rsync

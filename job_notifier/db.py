@@ -95,7 +95,7 @@ class Database:
                 "PRAGMA synchronous=NORMAL",
                 "PRAGMA foreign_keys=ON",
                 "PRAGMA busy_timeout=10000",
-                "PRAGMA cache_size=-2048",  # ~2 MB page cache to keep RSS low on Pi Zero 2 W
+                "PRAGMA cache_size=-2048",  # ~2 MB page cache to keep RSS low
                 "PRAGMA temp_store=FILE",
                 "PRAGMA wal_autocheckpoint=500",
             ):
