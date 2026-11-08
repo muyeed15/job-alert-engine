@@ -1,0 +1,86 @@
+{
+  "settings": {
+    "poll_interval_minutes": 30,
+    "page_size": 100,
+    "max_pages_per_category": 10,
+    "request_timeout_seconds": 20,
+    "request_delay_seconds": 1.0,
+    "db_path": "data/jobs.db",
+    "instant_batch_threshold": 3,
+    "max_jobs_per_email": 40,
+    "max_send_attempts": 5,
+    "job_retention_days": 90,
+    "early_stop_on_known_page": true
+  },
+  "users": [
+    {
+      "name": "Rahim",
+      "email": "rahim@example.com",
+      "categories": ["IT/Telecommunication"],
+      "locations": ["Dhaka"],
+      "exclude_locations": ["Savar", "Ashulia", "Gazipur", "Narayanganj"],
+      "include_anywhere_in_bd": true,
+      "experience": {
+        "min_years": 0,
+        "max_years": 1,
+        "include_unspecified": true
+      },
+      "keywords": [
+        "Python",
+        "Backend",
+        "Django",
+        "FastAPI",
+        "Software Engineer"
+      ],
+      "required_keywords": [],
+      "exclude_keywords": ["Senior", "Lead", "Head of", "Manager"],
+      "keyword_scope": "all",
+      "job_types": ["FullTime", "Intern"],
+      "workplaces": ["office", "remote", "hybrid"],
+      "min_salary": 25000,
+      "include_negotiable_salary": true,
+      "schedule": {
+        "mode": "instant"
+      }
+    },
+    {
+      "name": "Karim",
+      "email": "karim@example.com",
+      "categories": ["Marketing/Sales", "E-commerce/Digital Marketing"],
+      "locations": ["Dhaka", "Chattogram"],
+      "experience": {
+        "min_years": 2,
+        "max_years": 5,
+        "include_unspecified": false
+      },
+      "keywords": ["Digital Marketing", "Brand", "SEO", "Growth"],
+      "exclude_keywords": ["Intern", "Trainee"],
+      "keyword_scope": "title",
+      "job_types": ["FullTime"],
+      "min_salary": 35000,
+      "include_negotiable_salary": true,
+      "schedule": {
+        "mode": "digest",
+        "digest_time": ["09:00", "18:00"]
+      }
+    },
+    {
+      "name": "Nusrat",
+      "email": "nusrat@example.com",
+      "categories": [8, "Design/Creative"],
+      "locations": ["Uttara", "Banani", "Gulshan"],
+      "include_anywhere_in_bd": true,
+      "experience": {
+        "min_years": 1,
+        "max_years": 3
+      },
+      "keywords": ["UI/UX", "Figma", "Product Designer", "Graphic Designer"],
+      "workplaces": ["remote", "hybrid"],
+      "schedule": {
+        "mode": "digest",
+        "digest_time": "09:00"
+      },
+      "enabled": false
+    }
+  ]
+}
