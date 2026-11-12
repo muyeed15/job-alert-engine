@@ -1,6 +1,6 @@
 {
   "settings": {
-    "poll_interval_minutes": 30,
+    "poll_interval_minutes": 60,
     "page_size": 100,
     "max_pages_per_category": 10,
     "request_timeout_seconds": 20,

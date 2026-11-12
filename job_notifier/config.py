@@ -291,7 +291,7 @@ class UserProfile:
 
 @dataclass(frozen=True)
 class Settings:
-    poll_interval_minutes: int = 30
+    poll_interval_minutes: int = 60
     page_size: int = 100
     max_pages_per_category: int = 10
     request_timeout_seconds: float = 20.0
@@ -544,6 +544,12 @@ def _parse_settings(raw: dict[str, Any]) -> Settings:
         else:
             val = str(val).strip()
         values[key] = val
+    env_poll = os.environ.get("POLL_INTERVAL_MINUTES", "").strip()
+    if env_poll:
+        parsed_poll = _opt_int(env_poll, "POLL_INTERVAL_MINUTES", "env", None)
+        if parsed_poll is None:
+            raise ConfigError("POLL_INTERVAL_MINUTES must be a non-negative integer")
+        values["poll_interval_minutes"] = parsed_poll
     s = Settings(**{**asdict(defaults), **values})
     if s.poll_interval_minutes < 1:
         raise ConfigError("settings.poll_interval_minutes must be >= 1")
